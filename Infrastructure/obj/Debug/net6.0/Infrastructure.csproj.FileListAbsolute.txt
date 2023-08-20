@@ -1,0 +1,34 @@
+D:\FOR-WORK\i-APS\Infrastructure\bin\Debug\net6.0\Infrastructure.deps.json
+D:\FOR-WORK\i-APS\Infrastructure\bin\Debug\net6.0\Infrastructure.dll
+D:\FOR-WORK\i-APS\Infrastructure\bin\Debug\net6.0\Infrastructure.pdb
+D:\FOR-WORK\i-APS\Infrastructure\bin\Debug\net6.0\Domain.dll
+D:\FOR-WORK\i-APS\Infrastructure\bin\Debug\net6.0\Persistence.dll
+D:\FOR-WORK\i-APS\Infrastructure\bin\Debug\net6.0\Persistence.pdb
+D:\FOR-WORK\i-APS\Infrastructure\bin\Debug\net6.0\Domain.pdb
+D:\FOR-WORK\i-APS\Infrastructure\obj\Debug\net6.0\Infrastructure.csproj.AssemblyReference.cache
+D:\FOR-WORK\i-APS\Infrastructure\obj\Debug\net6.0\Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\FOR-WORK\i-APS\Infrastructure\obj\Debug\net6.0\Infrastructure.AssemblyInfoInputs.cache
+D:\FOR-WORK\i-APS\Infrastructure\obj\Debug\net6.0\Infrastructure.AssemblyInfo.cs
+D:\FOR-WORK\i-APS\Infrastructure\obj\Debug\net6.0\Infrastructure.csproj.CoreCompileInputs.cache
+D:\FOR-WORK\i-APS\Infrastructure\obj\Debug\net6.0\Infrastructure.csproj.CopyComplete
+D:\FOR-WORK\i-APS\Infrastructure\obj\Debug\net6.0\Infrastructure.dll
+D:\FOR-WORK\i-APS\Infrastructure\obj\Debug\net6.0\refint\Infrastructure.dll
+D:\FOR-WORK\i-APS\Infrastructure\obj\Debug\net6.0\Infrastructure.pdb
+D:\FOR-WORK\i-APS\Infrastructure\obj\Debug\net6.0\ref\Infrastructure.dll
+D:\FOR-WORK\New folder\i-APS\Infrastructure\bin\Debug\net6.0\Infrastructure.deps.json
+D:\FOR-WORK\New folder\i-APS\Infrastructure\bin\Debug\net6.0\Infrastructure.dll
+D:\FOR-WORK\New folder\i-APS\Infrastructure\bin\Debug\net6.0\Infrastructure.pdb
+D:\FOR-WORK\New folder\i-APS\Infrastructure\bin\Debug\net6.0\Domain.dll
+D:\FOR-WORK\New folder\i-APS\Infrastructure\bin\Debug\net6.0\Persistence.dll
+D:\FOR-WORK\New folder\i-APS\Infrastructure\bin\Debug\net6.0\Persistence.pdb
+D:\FOR-WORK\New folder\i-APS\Infrastructure\bin\Debug\net6.0\Domain.pdb
+D:\FOR-WORK\New folder\i-APS\Infrastructure\obj\Debug\net6.0\Infrastructure.csproj.AssemblyReference.cache
+D:\FOR-WORK\New folder\i-APS\Infrastructure\obj\Debug\net6.0\Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\FOR-WORK\New folder\i-APS\Infrastructure\obj\Debug\net6.0\Infrastructure.AssemblyInfoInputs.cache
+D:\FOR-WORK\New folder\i-APS\Infrastructure\obj\Debug\net6.0\Infrastructure.AssemblyInfo.cs
+D:\FOR-WORK\New folder\i-APS\Infrastructure\obj\Debug\net6.0\Infrastructure.csproj.CoreCompileInputs.cache
+D:\FOR-WORK\New folder\i-APS\Infrastructure\obj\Debug\net6.0\Infrastructure.csproj.CopyComplete
+D:\FOR-WORK\New folder\i-APS\Infrastructure\obj\Debug\net6.0\Infrastructure.dll
+D:\FOR-WORK\New folder\i-APS\Infrastructure\obj\Debug\net6.0\refint\Infrastructure.dll
+D:\FOR-WORK\New folder\i-APS\Infrastructure\obj\Debug\net6.0\Infrastructure.pdb
+D:\FOR-WORK\New folder\i-APS\Infrastructure\obj\Debug\net6.0\ref\Infrastructure.dll

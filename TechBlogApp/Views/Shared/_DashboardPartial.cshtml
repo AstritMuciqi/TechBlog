@@ -1,0 +1,227 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@using TechBlogApp.Domain.Models
+@inject UserManager<AppUser> UserManager;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>techblog</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="~/dash/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="~/dash/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <link rel="stylesheet" href="~/dash/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <link rel="stylesheet" href="~/dash/plugins/jqvmap/jqvmap.min.css">
+    <link rel="stylesheet" href="~/dash/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="~/dash/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <link rel="stylesheet" href="~/dash/plugins/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" href="~/dash/plugins/summernote/summernote-bs4.min.css">
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/AMS.Client.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/alertify.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.dataTables.min.css" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/site.css" />
+    <style>
+        .navbar-light .navbar-nav .nav-link {
+
+                color: white;
+        }
+
+        .loading-spinner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 200px;
+            font-size: 18px;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 18px;
+        }
+
+        .custombox {
+            position: relative;
+            padding: 3rem 2rem;
+            border: 1px dashed #dadada;
+        }
+        .footer{
+            bottom:0;
+        }
+    </style>
+</head>
+<body style="margin-bottom:0px;" class="hold-transition sidebar-mini layout-fixed">
+    <div class="wrapper">
+
+        
+      
+        <!-- /.control-sidebar -->
+         <header style="background:rgba(0, 0, 0, 0) linear-gradient(to right, #0091e5 0px, #00b7e5 100%) repeat scroll 0 0 !important; ">
+                <nav  class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" style="font-size:34px;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;color:white;"; asp-area="" asp-controller="Article" asp-action="Index">
+                            tech<b>blog</b> 
+                        </a>
+                        <div style="margin-top:1%;margin-left:2%;color:white; font-size:18px; font-weight:600;" class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                            <ul class="navbar-nav flex-grow-1">
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="Home" asp-action="AboutUs" >
+                                        About
+                                    </a>
+                                </li>
+
+                            @if (User.Identity.IsAuthenticated && (User.IsInRole("Creator") || (User.IsInRole("Admin"))))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="Article" asp-action="CreatorPage">
+                                        Create Article
+                                    </a>
+                                </li>
+                            }
+                             
+                            </ul>
+
+                        <input id="searchInput" style="width:350px" class="form-control" type="search" placeholder="Search" aria-label="Search">
+@*                             <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+ *@                        </div>
+                        
+                        <partial name="_LoginPartial.cshtml" />
+
+
+
+                    </div>
+                </nav>
+            </header>
+        <div class="container">
+           
+
+
+            <div class="container-fluid">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+    <footer style="margin-top:3%;" class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7">
+                    <div class="widget">
+                        <div class="footer-text text-left">
+                            <a href="index.html"><img src="images/version/tech-footer-logo.png" alt="" class="img-fluid"></a>
+                            <p>Tech Blog is a technology blog, we sharing marketing, news and gadget articles.</p>
+                            <div class="social">
+                                <a href="#" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i class="fa fa-facebook"></i></a>
+                                <a href="#" data-toggle="tooltip" data-placement="bottom" title="Twitter"><i class="fa fa-twitter"></i></a>
+                                <a href="#" data-toggle="tooltip" data-placement="bottom" title="Instagram"><i class="fa fa-instagram"></i></a>
+                                <a href="#" data-toggle="tooltip" data-placement="bottom" title="Google Plus"><i class="fa fa-google-plus"></i></a>
+                                <a href="#" data-toggle="tooltip" data-placement="bottom" title="Pinterest"><i class="fa fa-pinterest"></i></a>
+                            </div>
+
+                            <hr class="invis">
+
+                            <div class="newsletter-widget text-left">
+                                <form class="form-inline">
+                                    <input type="text" class="form-control" placeholder="Enter your email address">
+                                    <button type="submit" class="btn btn-primary">SUBMIT</button>
+                                </form>
+                            </div><!-- end newsletter -->
+                        </div><!-- end footer-text -->
+                    </div><!-- end widget -->
+                </div><!-- end col -->
+
+                <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                    <div class="widget">
+                        <h2 class="widget-title">Popular Categories</h2>
+                        <div class="link-widget">
+                            <ul>
+                                <li><a href="#">Marketing <span>(21)</span></a></li>
+                                <li><a href="#">SEO Service <span>(15)</span></a></li>
+                                <li><a href="#">Digital Agency <span>(31)</span></a></li>
+                                <li><a href="#">Make Money <span>(22)</span></a></li>
+                                <li><a href="#">Blogging <span>(66)</span></a></li>
+                            </ul>
+                        </div><!-- end link-widget -->
+                    </div><!-- end widget -->
+                </div><!-- end col -->
+
+                <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12">
+                    <div class="widget">
+                        <h2 class="widget-title">Copyrights</h2>
+                        <div class="link-widget">
+                            <ul>
+                                <li><a href="#">About us</a></li>
+                                <li><a href="#">Advertising</a></li>
+                                <li><a href="#">Write for us</a></li>
+                                <li><a href="#">Trademark</a></li>
+                                <li><a href="#">License & Help</a></li>
+                            </ul>
+                        </div><!-- end link-widget -->
+                    </div><!-- end widget -->
+                </div><!-- end col -->
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <br>
+                    <div class="copyright">&copy; Tech Blog.</div>
+                </div>
+            </div>
+        </div><!-- end container -->
+    </footer><!-- end footer -->
+    <script src="~/dash/plugins/jquery/jquery.min.js"></script>
+    <script src="~/dash/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <script>
+        $.widget.bridge('uibutton', $.ui.button)
+    </script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/dash/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/dash/plugins/chart.js/Chart.min.js"></script>
+    <script src="~/dash/plugins/sparklines/sparkline.js"></script>
+    <script src="~/dash/plugins/jqvmap/jquery.vmap.min.js"></script>
+    <script src="~/dash/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+    <script src="~/dash/plugins/jquery-knob/jquery.knob.min.js"></script>
+    <script src="~/dash/plugins/moment/moment.min.js"></script>
+    <script src="~/dash/plugins/daterangepicker/daterangepicker.js"></script>
+    <script src="~/dash/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="~/dash/plugins/summernote/summernote-bs4.min.js"></script>
+    <script src="~/dash/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+    <script src="~/dash/dist/js/adminlte.js"></script>
+    <script src="~/dash/dist/js/pages/dashboard.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("body").addClass("sidebar-collapse");
+        });
+    </script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+   
+</body>
+</html>

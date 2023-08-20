@@ -1,0 +1,180 @@
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\TechBlogApp.deps.json
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\TechBlogApp.runtimeconfig.json
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\TechBlogApp.staticwebassets.runtime.json
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\TechBlogApp.exe
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\appsettings.Development.json
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\appsettings.json
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\TechBlogAPI.staticwebassets.runtime.json
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\TechBlogAPI.exe
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\TechBlogAPI.deps.json
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\TechBlogAPI.runtimeconfig.json
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\TechBlogAPI.dll
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\TechBlogAPI.pdb
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\Humanizer.dll
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\Microsoft.Data.SqlClient.dll
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\Microsoft.Extensions.Identity.Core.dll
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\Microsoft.Extensions.Identity.Stores.dll
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\Microsoft.Identity.Client.dll
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\Microsoft.OpenApi.dll
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\System.Configuration.ConfigurationManager.dll
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\System.Drawing.Common.dll
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\System.Runtime.Caching.dll
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\System.Security.Cryptography.ProtectedData.dll
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\System.Security.Permissions.dll
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\System.Windows.Extensions.dll
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\Domain.dll
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\Infrastructure.dll
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\Persistence.dll
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\TechBlogApp.dll
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\Domain.pdb
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\Infrastructure.pdb
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\Persistence.pdb
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\TechBlogApp.pdb
+D:\FOR-WORK\i-APS\TechBlogAPI\obj\Debug\net6.0\TechBlogAPI.csproj.AssemblyReference.cache
+D:\FOR-WORK\i-APS\TechBlogAPI\obj\Debug\net6.0\TechBlogAPI.GeneratedMSBuildEditorConfig.editorconfig
+D:\FOR-WORK\i-APS\TechBlogAPI\obj\Debug\net6.0\TechBlogAPI.AssemblyInfoInputs.cache
+D:\FOR-WORK\i-APS\TechBlogAPI\obj\Debug\net6.0\TechBlogAPI.AssemblyInfo.cs
+D:\FOR-WORK\i-APS\TechBlogAPI\obj\Debug\net6.0\TechBlogAPI.csproj.CoreCompileInputs.cache
+D:\FOR-WORK\i-APS\TechBlogAPI\obj\Debug\net6.0\TechBlogAPI.MvcApplicationPartsAssemblyInfo.cs
+D:\FOR-WORK\i-APS\TechBlogAPI\obj\Debug\net6.0\TechBlogAPI.MvcApplicationPartsAssemblyInfo.cache
+D:\FOR-WORK\i-APS\TechBlogAPI\obj\Debug\net6.0\staticwebassets\msbuild.TechBlogAPI.Microsoft.AspNetCore.StaticWebAssets.props
+D:\FOR-WORK\i-APS\TechBlogAPI\obj\Debug\net6.0\staticwebassets\msbuild.build.TechBlogAPI.props
+D:\FOR-WORK\i-APS\TechBlogAPI\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.TechBlogAPI.props
+D:\FOR-WORK\i-APS\TechBlogAPI\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.TechBlogAPI.props
+D:\FOR-WORK\i-APS\TechBlogAPI\obj\Debug\net6.0\staticwebassets.pack.json
+D:\FOR-WORK\i-APS\TechBlogAPI\obj\Debug\net6.0\staticwebassets.build.json
+D:\FOR-WORK\i-APS\TechBlogAPI\obj\Debug\net6.0\staticwebassets.development.json
+D:\FOR-WORK\i-APS\TechBlogAPI\obj\Debug\net6.0\scopedcss\bundle\TechBlogAPI.styles.css
+D:\FOR-WORK\i-APS\TechBlogAPI\obj\Debug\net6.0\TechBlogAPI.csproj.CopyComplete
+D:\FOR-WORK\i-APS\TechBlogAPI\obj\Debug\net6.0\TechBlogAPI.dll
+D:\FOR-WORK\i-APS\TechBlogAPI\obj\Debug\net6.0\refint\TechBlogAPI.dll
+D:\FOR-WORK\i-APS\TechBlogAPI\obj\Debug\net6.0\TechBlogAPI.pdb
+D:\FOR-WORK\i-APS\TechBlogAPI\obj\Debug\net6.0\TechBlogAPI.genruntimeconfig.cache
+D:\FOR-WORK\i-APS\TechBlogAPI\obj\Debug\net6.0\ref\TechBlogAPI.dll
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\Newtonsoft.Json.dll
+D:\FOR-WORK\i-APS\TechBlogAPI\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\TechBlogApp.deps.json
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\TechBlogApp.runtimeconfig.json
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\TechBlogApp.staticwebassets.runtime.json
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\TechBlogApp.exe
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\appsettings.Development.json
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\appsettings.json
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\TechBlogAPI.staticwebassets.runtime.json
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\TechBlogAPI.exe
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\TechBlogAPI.deps.json
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\TechBlogAPI.runtimeconfig.json
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\TechBlogAPI.dll
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\TechBlogAPI.pdb
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\Humanizer.dll
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\Microsoft.Data.SqlClient.dll
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\Microsoft.Extensions.Identity.Core.dll
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\Microsoft.Extensions.Identity.Stores.dll
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\Microsoft.Identity.Client.dll
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\Microsoft.OpenApi.dll
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\Newtonsoft.Json.dll
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\System.Configuration.ConfigurationManager.dll
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\System.Drawing.Common.dll
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\System.Runtime.Caching.dll
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\System.Security.Cryptography.ProtectedData.dll
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\System.Security.Permissions.dll
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\System.Windows.Extensions.dll
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\Domain.dll
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\Infrastructure.dll
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\Persistence.dll
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\TechBlogApp.dll
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\Domain.pdb
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\Infrastructure.pdb
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\Persistence.pdb
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\bin\Debug\net6.0\TechBlogApp.pdb
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\obj\Debug\net6.0\TechBlogAPI.csproj.AssemblyReference.cache
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\obj\Debug\net6.0\TechBlogAPI.GeneratedMSBuildEditorConfig.editorconfig
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\obj\Debug\net6.0\TechBlogAPI.AssemblyInfoInputs.cache
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\obj\Debug\net6.0\TechBlogAPI.AssemblyInfo.cs
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\obj\Debug\net6.0\TechBlogAPI.csproj.CoreCompileInputs.cache
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\obj\Debug\net6.0\TechBlogAPI.MvcApplicationPartsAssemblyInfo.cs
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\obj\Debug\net6.0\TechBlogAPI.MvcApplicationPartsAssemblyInfo.cache
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\obj\Debug\net6.0\staticwebassets\msbuild.TechBlogAPI.Microsoft.AspNetCore.StaticWebAssets.props
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\obj\Debug\net6.0\staticwebassets\msbuild.build.TechBlogAPI.props
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.TechBlogAPI.props
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.TechBlogAPI.props
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\obj\Debug\net6.0\staticwebassets.pack.json
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\obj\Debug\net6.0\staticwebassets.build.json
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\obj\Debug\net6.0\staticwebassets.development.json
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\obj\Debug\net6.0\scopedcss\bundle\TechBlogAPI.styles.css
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\obj\Debug\net6.0\TechBlogAPI.csproj.CopyComplete
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\obj\Debug\net6.0\TechBlogAPI.dll
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\obj\Debug\net6.0\refint\TechBlogAPI.dll
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\obj\Debug\net6.0\TechBlogAPI.pdb
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\obj\Debug\net6.0\TechBlogAPI.genruntimeconfig.cache
+D:\FOR-WORK\New folder\i-APS\TechBlogAPI\obj\Debug\net6.0\ref\TechBlogAPI.dll

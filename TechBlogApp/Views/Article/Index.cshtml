@@ -1,0 +1,298 @@
+﻿
+
+@{
+    ViewData["Title"] = "Articles";
+    var isAuthenticated = User.Identity.IsAuthenticated;
+    var isUserInRole = User.IsInRole("Creator") || User.IsInRole("Admin");
+}
+
+
+<h2>Articles</h2>
+
+<div style="border:1px solid lightgray;padding:1rem;box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;" class="container mt-5">
+    <h4 class="mb-4">Sort Articles</h4>
+    <form id="sorting-form" class="form-inline mb-3">
+
+        <label class="mr-2" for="sort-by-alphabet">Sort by alphabet:</label>
+        <select class="form-control mr-2" id="sort-by-alphabet" name="sort-by-alphabet" onchange="sortArticles()">
+            <option value="az">A-Z</option>
+            <option value="za">Z-A</option>
+        </select>
+
+    </form>
+</div>
+
+<hr />
+
+<div style="padding-bottom:3rem;display: grid;
+  grid-template-columns: repeat(1, 1fr);gap: 20px;" class="card-deck" id="data-container">
+    
+</div>
+<script>
+  
+
+</script>
+
+<script>
+    $(document).ready(function () {
+        loadData();
+
+
+      
+        $('#data-container').on('click', '.btn-outline-danger', function () {
+            // alert("Do you want to delete Article ?");
+            var articleId = $(this).data('article-id');
+            console.log(articleId);
+            deleteArticle(articleId);
+        });
+        const searchInput = document.getElementById("searchInput");
+        console.log(searchInput);
+        searchInput.addEventListener('input', () => {
+            const searchTerm = searchInput.value;
+            // filterArticles(searchTerm);
+            console.log(searchTerm);
+            if (searchTerm != null && searchTerm != '' && searchTerm.length > 2) {
+                loadDataSearch(searchTerm);
+            }
+            if (searchTerm.length == 0) {
+                loadData(); // Load data when search input is cleared
+            }
+        });
+
+    });
+    function sortArticles() {
+        var sortBy = $('#sort-by-alphabet').val();
+        var $articles = $('.card');
+
+        if (sortBy === 'az') {
+            $articles.sort(function (a, b) {
+                return $(a).text().localeCompare($(b).text());
+            });
+        } else if (sortBy === 'za') {
+            $articles.sort(function (a, b) {
+                return $(b).text().localeCompare($(a).text());
+            });
+        }
+
+        $('#data-container').empty().append($articles);
+    }
+
+    function loadDataSearch(searchTerm) {
+        var IsAuthenticated = @isAuthenticated.ToString().ToLower();
+        var IsUserInRole = @isUserInRole.ToString().ToLower();
+        $.ajax({
+            url: `http://localhost:5186/api/Article?search=${searchTerm}`,//Replace with your API endpoint URL
+                        type: 'GET',
+            success: function (data) {
+                // Clear existing content
+                $('#data-container').empty();
+
+                // Append new data to the container
+                $.each(data, function (index, article) {
+                    updatePublishedTime(article);
+
+                    var card = `
+        <div style="margin-top: 2%; display: flex; flex-direction: row;" class="card">
+
+            <div style="margin-right: 1.5625rem;
+            min-width: 15.625rem;
+            max-width: 15.625rem;
+            width: 15.625rem;
+            min-height: 11.75rem;
+            height: 8.75rem;
+            max-height: 8.75rem;
+            border-radius: .5rem;
+            margin-bottom: 0;">
+                <a asp-controller="Article" asp-action="ArticleDetails" asp-route-id="${article.ArticleId}" class="card-title">
+                    <img style="width:100%;height:100%;object-fit:cover;" src="/images/${article.ImagePath}" alt="Card image cap">
+                </a>
+            </div>
+
+            <div style="display:flex;justify-content:space-between; flex-direction:column;" class="card-body">
+                <a style="margin-top: 1.35rem;
+                        font-family: inter tight,sans-serif;
+                        font-size: 1.05rem;
+                        line-height: 1.1904761905em;
+                        font-weight: 800;
+                        color: black;
+                        text-align: start;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 3;
+                        -webkit-box-orient: vertical;
+                        overflow: hidden;"
+                        asp-controller="Article" asp-action="ArticleDetails" asp-route-id="${article.ArticleId}" class="card-title">${article.Title}</a>
+
+                <div style="display:flex; border-bottom:1px solid lightgray;margin-bottom:3%;">
+        <small style="width:50%;" class="text-muted" id="time-${article.ArticleId}">${article.TimeDifference}</small>
+                        <p style="display:flex;justify-content:space-between;width:20%;margin-left:29%">
+                        <i class="bi bi-facebook"></i>
+                        <i class="bi bi-twitter"></i>
+                        <i class="bi bi-linkedin"></i>
+                    </p>
+                </div>
+            </div>
+
+                 ${(IsAuthenticated && IsUserInRole)
+                            ? `<div style="display:flex;height:100%;justify-content:space-between; flex-direction:column;background:white;" class="card-footer">
+                                <a href="/Article/CreatorPage/${article.ArticleId}" class="btn btn-outline-primary">Edit</a>
+                                <button style="margin-top:15%;" onclick="deleteArticle(${article.ArticleId})" class="btn btn-outline-danger">Delete</button>
+                            </div>`
+                            : ''
+                        }
+        </div>
+    `;
+                    $('#data-container').append(card);
+                });
+            },
+            error: function () {
+                $('#data-container').text('Error loading data.');
+            }
+        });
+    }
+    function deleteArticle(id) {
+        $.ajax({
+            url: `http://localhost:5186/api/Article/${id}`, // Replace with your API endpoint URL
+            type: 'DELETE',
+            success: function (data) {
+                loadData();
+            },
+            error: function () {
+                $('#data-container').text('Error loading data.');
+            }
+        });
+    }
+
+    function loadData() {
+        $('#data-container').html('<div style="text-align:center;" ><img style="height:200px;width:200px;margin:0 auto;" src="/images/spinner.gif" alt="Loading..."></div>');
+        var IsAuthenticated = @isAuthenticated.ToString().ToLower();
+        var IsUserInRole = @isUserInRole.ToString().ToLower();
+
+
+        $.ajax({
+            url: 'http://localhost:5186/api/Article/', // Replace with your API endpoint URL
+            type: 'GET',
+            success: function (data) {
+                // Clear existing content
+                // console.log(data.length);
+                console.log(data);
+                $('#data-container').empty();
+                if (data.length == 0) {
+                var card = `
+                                               <div class="container mt-4">
+                                                    <div class="card d-flex flex-row">
+                                                        <div class="card-body">
+                                                            <p class="card-text">Currently, we don't have any article to show!</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                        `;
+                }
+                // Append new data to the container
+                else {
+
+                    $.each(data, function (index, article) {
+                        console.log(article.appUserId);
+                            var card = `
+                                        <div style="margin-top: 2%; display: flex; flex-direction: row;" class="card">
+
+                                            <div style="margin-right: 1.5625rem;
+                                            min-width: 15.625rem;
+                                            max-width: 15.625rem;
+                                            width: 15.625rem;
+                                            min-height: 11.75rem;
+                                            height: 8.75rem;
+                                            max-height: 8.75rem;
+                                            border-radius: .5rem;
+                                            margin-bottom: 0;">
+                                            <a href="/Article/ArticleDetails/${article.articleId}"  class="card-title">
+                                            <img style="width:100%;height:100%;object-fit:cover;" src="/images/${article.imagePath}" alt="Card image cap">
+
+                                        </a>
+
+                                    </div>
+                                    <div style="display:flex;justify-content:space-between; flex-direction:column;" class="card-body">
+                                        <a style="margin-top: 1.35rem;
+                                                font-family: inter tight,sans-serif;
+                                                font-size: 1.05rem;
+                                                line-height: 1.1904761905em;
+                                                font-weight: 800;
+                                                color: black;
+                                                text-align: start;
+                                                display: -webkit-box;
+                                                -webkit-line-clamp: 3;
+                                                -webkit-box-orient: vertical;
+                                                overflow: hidden;"
+                                                    href="/Article/ArticleDetails/${article.articleId}" class="card-title">${article.title}</a>
+
+                                        <div style="display:flex; border-bottom:1px solid lightgray;margin-bottom:3%;">
+            <small style="width:50%;" class="text-muted" id="time-${article.articleId}">${article.timeDifference}</small>
+                                                <p style="display:flex;justify-content:space-between;width:20%;margin-left:29%">
+                                                <i class="bi bi-facebook"></i>
+
+                                                <i class="bi bi-twitter"></i>
+                                                <i class="bi bi-linkedin"></i>
+                                            </p>
+                                        </div>
+                                    </div>
+                                               ${(IsAuthenticated && IsUserInRole)
+                                    ? `<div style="display:flex;height:100%;justify-content:center; flex-direction:column;background:white;" class="card-footer">
+                                <a href="/Article/CreatorPage/${article.articleId}" class="btn btn-outline-primary">Edit</a>
+                                    <button style="margin-top:15%;" onclick="deleteArticle('${article.articleId}')" class="btn btn-outline-danger">Delete</button>
+                            </div>`
+                                    : ''
+                                }
+                            </div>
+                        `;
+
+                        $('#data-container').append(card);
+
+                        updatePublishedTime(article);
+
+                    });
+                }
+                $('#data-container').append(card);
+
+
+            },
+            error: function () {
+                $('#data-container').text('Error loading data.');
+            }
+        });
+    }
+
+
+    function formatTimeDifference(timeDifference) {
+        if (timeDifference < 1) {
+            return "Less than a minute ago";
+        } else if (timeDifference < 60) {
+            return `${timeDifference} min${timeDifference === 1 ? "" : "s"} ago`;
+        } else if (timeDifference < 1440) { // Less than 24 hours (1 day)
+            return `${Math.floor(timeDifference / 60)} hour${Math.floor(timeDifference / 60) === 1 ? "" : "s"} ago`;
+        } else if (timeDifference < 10080) { // Less than 7 days (1 week)
+            return `${Math.floor(timeDifference / 1440)} day${Math.floor(timeDifference / 1440) === 1 ? "" : "s"} ago`;
+        } else if (timeDifference < 43200) { // Less than 30 days (1 month)
+            return `${Math.floor(timeDifference / 10080)} week${Math.floor(timeDifference / 10080) === 1 ? "" : "s"} ago`;
+        } else { // More than 1 month
+            return `${Math.floor(timeDifference / 43200)} month${Math.floor(timeDifference / 43200) === 1 ? "" : "s"} ago`;
+        }
+    }
+
+    function updatePublishedTime(article) {
+        // console.log(article);
+        const timeElement = document.getElementById(`time-${article.articleId}`);
+        // console.log(`"time-${article[0].ArticleId}"`);
+        console.log(timeElement);
+        if (timeElement) {
+            const timeDifference = article.timeDifference;
+            const formattedTimeAgo = formatTimeDifference(timeDifference);
+            timeElement.textContent = `${formattedTimeAgo} | ${article.user.fullname}`;
+
+            // console.log(timeElement.textContent);
+        }
+    }
+
+        
+    
+</script>
+</div>
+

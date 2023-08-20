@@ -1,0 +1,34 @@
+D:\FOR-WORK\i-APS\Persistence\bin\Debug\net6.0\Persistence.deps.json
+D:\FOR-WORK\i-APS\Persistence\bin\Debug\net6.0\Persistence.runtimeconfig.json
+D:\FOR-WORK\i-APS\Persistence\bin\Debug\net6.0\Persistence.dll
+D:\FOR-WORK\i-APS\Persistence\bin\Debug\net6.0\Persistence.pdb
+D:\FOR-WORK\i-APS\Persistence\bin\Debug\net6.0\Domain.dll
+D:\FOR-WORK\i-APS\Persistence\bin\Debug\net6.0\Domain.pdb
+D:\FOR-WORK\i-APS\Persistence\obj\Debug\net6.0\Persistence.csproj.AssemblyReference.cache
+D:\FOR-WORK\i-APS\Persistence\obj\Debug\net6.0\Persistence.GeneratedMSBuildEditorConfig.editorconfig
+D:\FOR-WORK\i-APS\Persistence\obj\Debug\net6.0\Persistence.AssemblyInfoInputs.cache
+D:\FOR-WORK\i-APS\Persistence\obj\Debug\net6.0\Persistence.AssemblyInfo.cs
+D:\FOR-WORK\i-APS\Persistence\obj\Debug\net6.0\Persistence.csproj.CoreCompileInputs.cache
+D:\FOR-WORK\i-APS\Persistence\obj\Debug\net6.0\Persistence.csproj.CopyComplete
+D:\FOR-WORK\i-APS\Persistence\obj\Debug\net6.0\Persistence.dll
+D:\FOR-WORK\i-APS\Persistence\obj\Debug\net6.0\refint\Persistence.dll
+D:\FOR-WORK\i-APS\Persistence\obj\Debug\net6.0\Persistence.pdb
+D:\FOR-WORK\i-APS\Persistence\obj\Debug\net6.0\Persistence.genruntimeconfig.cache
+D:\FOR-WORK\i-APS\Persistence\obj\Debug\net6.0\ref\Persistence.dll
+D:\FOR-WORK\New folder\i-APS\Persistence\bin\Debug\net6.0\Persistence.deps.json
+D:\FOR-WORK\New folder\i-APS\Persistence\bin\Debug\net6.0\Persistence.runtimeconfig.json
+D:\FOR-WORK\New folder\i-APS\Persistence\bin\Debug\net6.0\Persistence.dll
+D:\FOR-WORK\New folder\i-APS\Persistence\bin\Debug\net6.0\Persistence.pdb
+D:\FOR-WORK\New folder\i-APS\Persistence\bin\Debug\net6.0\Domain.dll
+D:\FOR-WORK\New folder\i-APS\Persistence\bin\Debug\net6.0\Domain.pdb
+D:\FOR-WORK\New folder\i-APS\Persistence\obj\Debug\net6.0\Persistence.csproj.AssemblyReference.cache
+D:\FOR-WORK\New folder\i-APS\Persistence\obj\Debug\net6.0\Persistence.GeneratedMSBuildEditorConfig.editorconfig
+D:\FOR-WORK\New folder\i-APS\Persistence\obj\Debug\net6.0\Persistence.AssemblyInfoInputs.cache
+D:\FOR-WORK\New folder\i-APS\Persistence\obj\Debug\net6.0\Persistence.AssemblyInfo.cs
+D:\FOR-WORK\New folder\i-APS\Persistence\obj\Debug\net6.0\Persistence.csproj.CoreCompileInputs.cache
+D:\FOR-WORK\New folder\i-APS\Persistence\obj\Debug\net6.0\Persistence.csproj.CopyComplete
+D:\FOR-WORK\New folder\i-APS\Persistence\obj\Debug\net6.0\Persistence.dll
+D:\FOR-WORK\New folder\i-APS\Persistence\obj\Debug\net6.0\refint\Persistence.dll
+D:\FOR-WORK\New folder\i-APS\Persistence\obj\Debug\net6.0\Persistence.pdb
+D:\FOR-WORK\New folder\i-APS\Persistence\obj\Debug\net6.0\Persistence.genruntimeconfig.cache
+D:\FOR-WORK\New folder\i-APS\Persistence\obj\Debug\net6.0\ref\Persistence.dll
