@@ -30,7 +30,17 @@ namespace TechBlogApp.Controllers
         {
 
             var article = _articleRepository.GetArticleById(id);
-            return View(article);
+
+            string idArticle = id.ToString();
+            // If the model state is not valid, return to the article details view with the validation errors
+
+            var comments = _articleRepository.GetCommentsArticleById(idArticle);
+
+
+
+            var model = (Article: article, Comments: comments);
+
+            return View(model); // Pass the model to the view
         }
         [Authorize(Roles = "Admin, Creator")]
         public IActionResult CreatorPage(Guid id)
@@ -46,6 +56,37 @@ namespace TechBlogApp.Controllers
             }
 
             return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> AddComment(Comment commentModel, string Content)
+        {
+
+                // Get the currently logged-in user
+                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+                // Create a new Comment object and populate it with data
+                var newComment = new Comment
+                {
+                    UserId = userId,
+                    //Content = commentModel.Content,
+                    Content = Content,
+                    ArticleId = commentModel.ArticleId
+                };
+
+                _articleRepository.AddComment(newComment);
+
+
+
+                // Add newComment to the database using your data access logic
+
+                //return RedirectToAction("ArticleDetails", new { id = commentModel.ArticleId });
+            string guidString = commentModel.ArticleId;
+            Guid guid = Guid.Parse(guidString);
+            // If the model state is not valid, return to the article details view with the validation errors
+            var article = _articleRepository.GetArticleById(guid);
+
+            //article.Comments.;
+            return View("ArticleDetails", article);
         }
 
 

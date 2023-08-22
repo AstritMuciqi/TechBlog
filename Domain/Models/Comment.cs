@@ -12,7 +12,7 @@ namespace TechBlogApp.Domain.Models
         public Guid Id { get; set; }
 
         public string Content { get; set; }
-        //public string ArticleId { get; set; }
+        public string ArticleId { get; set; }
         public string UserId { get; set; }
         //public virtual AppUser User { get; set; }
     }

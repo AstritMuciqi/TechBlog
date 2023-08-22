@@ -10,8 +10,15 @@ namespace Domain.Interfaces
     public interface IArticleRepository
     {
         IEnumerable<Article> GetAllArticles(string search);
+
+        List<Comment> GetCommentsArticleById(string id);
+
+        
         Article GetArticleById(Guid id);
         void AddArticle(Article article);
+
+        void AddComment(Comment comment);
+
         void UpdateArticle(Article article);
         void DeleteArticle(Guid id);
     }

@@ -33,14 +33,28 @@ namespace Infrastructure.Interface
         public Article GetArticleById(Guid id)
         {
             return _context.Articles.Find(id);
+
         }
+
+        public List<Comment>  GetCommentsArticleById(string id)
+        {
+            return _context.Comments.Where(u=>u.ArticleId == id).ToList();
+
+        }
+
 
         public void AddArticle(Article article)
         {
             _context.Articles.Add(article);
             _context.SaveChanges();
         }
+        public void AddComment(Comment comment)
+        {
+            _context.Comments.Add(comment);
+            _context.SaveChanges();
+        }
 
+        
         public void UpdateArticle(Article article)
         {
             _context.Update(article);

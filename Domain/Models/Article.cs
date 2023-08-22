@@ -16,7 +16,7 @@
 
         public string Tags { get; set; }
 
-        public List<Comment> Comments { get; set; }
+        public virtual List<Comment> Comments { get; set; }
 
         public virtual AppUser User { get; set; }
 
