@@ -14,6 +14,10 @@ namespace TechBlogApp.Domain.Models
         public string Content { get; set; }
         public string ArticleId { get; set; }
         public string UserId { get; set; }
+
+        public DateTime DatePublished { get; set; }
+
+        public int TimeDifference { get; set; }
         //public virtual AppUser User { get; set; }
     }
 }

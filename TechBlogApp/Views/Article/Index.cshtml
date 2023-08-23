@@ -89,7 +89,6 @@
 
                 // Append new data to the container
                 $.each(data, function (index, article) {
-                    updatePublishedTime(article);
 
                     var card = `
         <div style="margin-top: 2%; display: flex; flex-direction: row;" class="card">
@@ -103,8 +102,8 @@
             max-height: 8.75rem;
             border-radius: .5rem;
             margin-bottom: 0;">
-                <a asp-controller="Article" asp-action="ArticleDetails" asp-route-id="${article.ArticleId}" class="card-title">
-                    <img style="width:100%;height:100%;object-fit:cover;" src="/images/${article.ImagePath}" alt="Card image cap">
+                <a asp-controller="Article" asp-action="ArticleDetails" asp-route-id="${article.articleId}" class="card-title">
+                    <img style="width:100%;height:100%;object-fit:cover;" src="/images/${article.imagePath}" alt="Card image cap">
                 </a>
             </div>
 
@@ -120,10 +119,10 @@
                         -webkit-line-clamp: 3;
                         -webkit-box-orient: vertical;
                         overflow: hidden;"
-                        asp-controller="Article" asp-action="ArticleDetails" asp-route-id="${article.ArticleId}" class="card-title">${article.Title}</a>
+                        asp-controller="Article" asp-action="ArticleDetails" asp-route-id="${article.articleId}" class="card-title">${article.title}</a>
 
                 <div style="display:flex; border-bottom:1px solid lightgray;margin-bottom:3%;">
-        <small style="width:50%;" class="text-muted" id="time-${article.ArticleId}">${article.TimeDifference}</small>
+        <small style="width:50%;" class="text-muted" id="time-${article.articleId}">${article.timeDifference}</small>
                         <p style="display:flex;justify-content:space-between;width:20%;margin-left:29%">
                         <i class="bi bi-facebook"></i>
                         <i class="bi bi-twitter"></i>
@@ -134,14 +133,16 @@
 
                  ${(IsAuthenticated && IsUserInRole)
                             ? `<div style="display:flex;height:100%;justify-content:space-between; flex-direction:column;background:white;" class="card-footer">
-                                <a href="/Article/CreatorPage/${article.ArticleId}" class="btn btn-outline-primary">Edit</a>
-                                <button style="margin-top:15%;" onclick="deleteArticle(${article.ArticleId})" class="btn btn-outline-danger">Delete</button>
+                                <a href="/Article/CreatorPage/${article.articleId}" class="btn btn-outline-primary">Edit</a>
+                                <button style="margin-top:15%;" onclick="deleteArticle(${article.articleId})" class="btn btn-outline-danger">Delete</button>
                             </div>`
                             : ''
                         }
         </div>
     `;
                     $('#data-container').append(card);
+                    updatePublishedTime(article);
+
                 });
             },
             error: function () {

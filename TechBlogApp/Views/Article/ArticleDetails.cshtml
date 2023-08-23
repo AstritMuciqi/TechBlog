@@ -1,5 +1,5 @@
 ﻿﻿@using TechBlogApp.Domain.Models
-@model (Article, List<Comment>)
+@model Article
 
 
 @{
@@ -17,28 +17,28 @@
     font-weight: 800;
     color: black;
     text-align: center;">
-                @Model.Item1.Title
+                @Model.Title
             </h1>
         </div>
 
         <div class="card-body">
-            <img style="height:100%;width:100%;object-fit:cover;" src="~/images/@Model.Item1.ImagePath" />
+            <img style="height:100%;width:100%;object-fit:cover;" src="~/images/@Model.ImagePath" />
             <br /> <br />
-            @Html.Raw(Model.Item1.Content)
+            @Html.Raw(Model.Content)
         </div>
 
         <div class="card-footer">
-            @Html.ActionLink("Edit", "CreatorPage", new {Id = Model.Item1.ArticleId}, new {@class="btn btn-sm btn-secondary"})
-            <button onclick="deleteArticle('@Model.Item1.ArticleId')" class="btn btn-outline-danger">Delete</button>
+            @Html.ActionLink("Edit", "CreatorPage", new {Id = Model.ArticleId}, new {@class="btn btn-sm btn-secondary"})
+            <button onclick="deleteArticle('@Model.ArticleId')" class="btn btn-outline-danger">Delete</button>
 
       </div>
 
         <div style="margin-top:3%;" class="custombox clearfix">
-            <h4 class="small-title">@Model.Item2.Capacity Comments</h4>
+            <h4 class="small-title"><span id="commentCount">0</span> Comments</h4>
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="comments-list">
-                        @foreach (var comment in Model.Item2)
+                    <div id="commentsList" class="comments-list">
+                        @* @foreach (var comment in Model.Item2)
                         {
                             <div class="media">
                                 <a class="media-left" href="#">
@@ -50,7 +50,7 @@
                                     <a href="#" class="btn btn-primary btn-sm">Reply</a>
                                 </div>
                             </div>
-                        }
+                        } *@
                     </div>
                 </div><!-- end col -->
             </div><!-- end row -->
@@ -66,20 +66,29 @@
             <h4 class="small-title">Leave a Reply</h4>
             <div class="row">
                 <div class="col-lg-12">
-                    <form asp-controller="Article" asp-action="AddComment" method="post" class="form-wrapper">
-                        <input type="hidden" name="ArticleId" value="@Model.Item1.ArticleId" />
-                        <textarea class="form-control" name="Content" placeholder="Your comment"></textarea>
-                        <button type="submit" class="btn btn-primary">Submit Comment</button>
+
+                    <form method="post" id="commentForm">
+                        <textarea id="commentContent" class="form-control" name="Content" placeholder="Your comment"></textarea>
+                        <input id="articleId" type="hidden" name="ArticleId" value="@Model.ArticleId" /> <br />
+                        <button class="btn btn-primary" type="button" id="submitComment">Submit Comment</button>
                     </form>
+
                 </div>
             </div>
         </div>
+
+
+      
     </div>
 
 
     <script>
 
         $(document).ready(function () {
+            var id = '@Model.ArticleId'; // Assuming Model.Item1 contains the article ID
+            id = id.toString();
+            console.log(id);
+            getComments(id);
 
             $('#data-container-details').on('click', '.btn-outline-danger', function () {
                 // alert("Do you want to delete Article ?");
@@ -87,7 +96,40 @@
                 console.log(articleId);
                 deleteArticle(articleId);
             });
-            ;
+
+
+            $("#submitComment").click(function () {
+                var commentContent = $("#commentContent").val();
+                var articleId = $("#articleId").val();
+                var currentDate = new Date();
+
+
+                var comment = {
+                    DatePublished: currentDate,
+                    UserId: commentContent,
+                    Content: commentContent,
+                    ArticleId: articleId
+                };
+                // console.log({ ArticleId: articleId, Content: commentContent });
+                $.ajax({
+                    type: "POST",
+                    url: "http://localhost:5186/api/Article/AddComment", // Replace ControllerName with the actual name of your controller
+                    data: JSON.stringify(comment),
+                    contentType: "application/json",
+                    success: function (response) {
+                        $('#commentContent').val('');
+                        $("#resultMessage").html(response.message);
+                        getComments(id);
+                        // Optionally, you can handle other logic here
+                    },
+                    error: function (xhr, status, error) {
+                        var errorMessage = xhr.responseJSON.title;
+                        $("#resultMessage").html(errorMessage);
+                    }
+                });
+            });
+
+            
 
         });
         function deleteArticle(id) {
@@ -101,6 +143,79 @@
                     $('#data-container').text('Error loading data.');
                 }
             });
+        }
+
+        function getComments(id){
+
+            $.ajax({
+                url: `http://localhost:5186/api/Article/GetComments?id=${id}`,
+                method: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    // Update comment count
+                    $('#commentCount').text(data.comments.length);
+
+                    // Append comments
+                    var commentsList = $('#commentsList');
+                    commentsList.empty(); // Clear existing comments
+
+                    $.each(data.comments, function (index, comment) {
+                        var commentHtml = `
+                                <div class="media">
+                                    <a class="media-left" href="#">
+                                        <img src="/images/author.png" alt="" class="rounded-circle">
+                                    </a>
+                                    <div class="media-body">
+
+                                                <h4 class="media-heading user_name">Amanda Martines <small style="width:50%;" class="text-muted" id="time-${comment.id}">${comment.timeDifference}</small></h4>
+
+                                        
+
+                                        <p>${comment.content}</p>
+                                        <a href="#" class="btn btn-primary btn-sm">Reply</a>
+                                    </div>
+                                </div>
+                            `;
+
+                        commentsList.append(commentHtml);
+                        updatePublishedTime(comment);
+
+                    });
+                },
+                error: function (error) {
+                    console.error('Error fetching comments:', error);
+                }
+            });
+        }
+
+        function formatTimeDifference(timeDifference) {
+            if (timeDifference < 1) {
+                return "Less than a minute ago";
+            } else if (timeDifference < 60) {
+                return `${timeDifference} min${timeDifference === 1 ? "" : "s"} ago`;
+            } else if (timeDifference < 1440) { // Less than 24 hours (1 day)
+                return `${Math.floor(timeDifference / 60)} hour${Math.floor(timeDifference / 60) === 1 ? "" : "s"} ago`;
+            } else if (timeDifference < 10080) { // Less than 7 days (1 week)
+                return `${Math.floor(timeDifference / 1440)} day${Math.floor(timeDifference / 1440) === 1 ? "" : "s"} ago`;
+            } else if (timeDifference < 43200) { // Less than 30 days (1 month)
+                return `${Math.floor(timeDifference / 10080)} week${Math.floor(timeDifference / 10080) === 1 ? "" : "s"} ago`;
+            } else { // More than 1 month
+                return `${Math.floor(timeDifference / 43200)} month${Math.floor(timeDifference / 43200) === 1 ? "" : "s"} ago`;
+            }
+        }
+
+        function updatePublishedTime(comment) {
+            console.log(comment);
+            const timeElement = document.getElementById(`time-${comment.id}`);
+            // console.log(`"time-${article[0].ArticleId}"`);
+            console.log(timeElement);
+            if (timeElement) {
+                const timeDifference = comment.timeDifference;
+                const formattedTimeAgo = formatTimeDifference(timeDifference);
+                timeElement.textContent = `${formattedTimeAgo}`;
+
+                console.log(timeElement.textContent);
+            }
         }
     </script>
 </div>

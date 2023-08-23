@@ -31,16 +31,7 @@ namespace TechBlogApp.Controllers
 
             var article = _articleRepository.GetArticleById(id);
 
-            string idArticle = id.ToString();
-            // If the model state is not valid, return to the article details view with the validation errors
-
-            var comments = _articleRepository.GetCommentsArticleById(idArticle);
-
-
-
-            var model = (Article: article, Comments: comments);
-
-            return View(model); // Pass the model to the view
+            return View(article); // Pass the model to the view
         }
         [Authorize(Roles = "Admin, Creator")]
         public IActionResult CreatorPage(Guid id)
