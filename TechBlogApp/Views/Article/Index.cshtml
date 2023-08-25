@@ -175,83 +175,89 @@
             success: function (data) {
                 // Clear existing content
                 // console.log(data.length);
-                console.log(data);
-                $('#data-container').empty();
-                if (data.length == 0) {
-                var card = `
-                                               <div class="container mt-4">
-                                                    <div class="card d-flex flex-row">
-                                                        <div class="card-body">
-                                                            <p class="card-text">Currently, we don't have any article to show!</p>
+
+                    $('#data-container').empty();
+
+
+
+
+                    if (data.length == 0) {
+                        var card = `
+                                                       <div class="container mt-4">
+                                                            <div class="card d-flex flex-row">
+                                                                <div class="card-body">
+                                                                    <p class="card-text">Currently, we don't have any article to show!</p>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                        `;
-                }
-                // Append new data to the container
-                else {
+                                                `;
+                    }
+                    // Append new data to the container
+                    else {
 
-                    $.each(data, function (index, article) {
-                        console.log(article.appUserId);
+                        $.each(data, function (index, article) {
+                            console.log(article.appUserId);
                             var card = `
-                                        <div style="margin-top: 2%; display: flex; flex-direction: row;" class="card">
+                                                <div style="margin-top: 2%; display: flex; flex-direction: row;" class="card">
 
-                                            <div style="margin-right: 1.5625rem;
-                                            min-width: 15.625rem;
-                                            max-width: 15.625rem;
-                                            width: 15.625rem;
-                                            min-height: 11.75rem;
-                                            height: 8.75rem;
-                                            max-height: 8.75rem;
-                                            border-radius: .5rem;
-                                            margin-bottom: 0;">
-                                            <a href="/Article/ArticleDetails/${article.articleId}"  class="card-title">
-                                            <img style="width:100%;height:100%;object-fit:cover;" src="/images/${article.imagePath}" alt="Card image cap">
+                                                    <div style="margin-right: 1.5625rem;
+                                                    min-width: 15.625rem;
+                                                    max-width: 15.625rem;
+                                                    width: 15.625rem;
+                                                    min-height: 11.75rem;
+                                                    height: 8.75rem;
+                                                    max-height: 8.75rem;
+                                                    border-radius: .5rem;
+                                                    margin-bottom: 0;">
+                                                    <a href="/Article/ArticleDetails/${article.articleId}"  class="card-title">
+                                                    <img style="width:100%;height:100%;object-fit:cover;" src="/images/${article.imagePath}" alt="Card image cap">
 
-                                        </a>
+                                                </a>
 
-                                    </div>
-                                    <div style="display:flex;justify-content:space-between; flex-direction:column;" class="card-body">
-                                        <a style="margin-top: 1.35rem;
-                                                font-family: inter tight,sans-serif;
-                                                font-size: 1.05rem;
-                                                line-height: 1.1904761905em;
-                                                font-weight: 800;
-                                                color: black;
-                                                text-align: start;
-                                                display: -webkit-box;
-                                                -webkit-line-clamp: 3;
-                                                -webkit-box-orient: vertical;
-                                                overflow: hidden;"
-                                                    href="/Article/ArticleDetails/${article.articleId}" class="card-title">${article.title}</a>
+                                            </div>
+                                            <div style="display:flex;justify-content:space-between; flex-direction:column;" class="card-body">
+                                                <a style="margin-top: 1.35rem;
+                                                        font-family: inter tight,sans-serif;
+                                                        font-size: 1.05rem;
+                                                        line-height: 1.1904761905em;
+                                                        font-weight: 800;
+                                                        color: black;
+                                                        text-align: start;
+                                                        display: -webkit-box;
+                                                        -webkit-line-clamp: 3;
+                                                        -webkit-box-orient: vertical;
+                                                        overflow: hidden;"
+                                                            href="/Article/ArticleDetails/${article.articleId}" class="card-title">${article.title}</a>
 
-                                        <div style="display:flex; border-bottom:1px solid lightgray;margin-bottom:3%;">
-            <small style="width:50%;" class="text-muted" id="time-${article.articleId}">${article.timeDifference}</small>
-                                                <p style="display:flex;justify-content:space-between;width:20%;margin-left:29%">
-                                                <i class="bi bi-facebook"></i>
+                                                <div style="display:flex; border-bottom:1px solid lightgray;margin-bottom:3%;">
+                    <small style="width:50%;" class="text-muted" id="time-${article.articleId}">${article.timeDifference}</small>
+                                                        <p style="display:flex;justify-content:space-between;width:20%;margin-left:29%">
+                                                        <i class="bi bi-facebook"></i>
 
-                                                <i class="bi bi-twitter"></i>
-                                                <i class="bi bi-linkedin"></i>
-                                            </p>
-                                        </div>
-                                    </div>
-                                               ${(IsAuthenticated && IsUserInRole)
+                                                        <i class="bi bi-twitter"></i>
+                                                        <i class="bi bi-linkedin"></i>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                                       ${(IsAuthenticated && IsUserInRole)
                                     ? `<div style="display:flex;height:100%;justify-content:center; flex-direction:column;background:white;" class="card-footer">
-                                <a href="/Article/CreatorPage/${article.articleId}" class="btn btn-outline-primary">Edit</a>
-                                    <button style="margin-top:15%;" onclick="deleteArticle('${article.articleId}')" class="btn btn-outline-danger">Delete</button>
-                            </div>`
+                                        <a href="/Article/CreatorPage/${article.articleId}" class="btn btn-outline-primary">Edit</a>
+                                            <button style="margin-top:15%;" onclick="deleteArticle('${article.articleId}')" class="btn btn-outline-danger">Delete</button>
+                                    </div>`
                                     : ''
                                 }
-                            </div>
-                        `;
+                                    </div>
+                                `;
 
-                        $('#data-container').append(card);
 
-                        updatePublishedTime(article);
+                            $('#data-container').append(card);
 
-                    });
-                }
-                $('#data-container').append(card);
+                            updatePublishedTime(article);
+
+
+                        });
+                    }
+            $('#data-container').append(card);
 
 
             },

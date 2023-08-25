@@ -32,7 +32,7 @@ namespace Infrastructure.Interface
 
         public Article GetArticleById(Guid id)
         {
-            return _context.Articles.Find(id);
+            return _context.Articles.Include(n => n.User).FirstOrDefault(n=>n.ArticleId == id);
 
         }
 
@@ -67,6 +67,15 @@ namespace Infrastructure.Interface
             _context.Articles.Remove(article);
             _context.SaveChanges();
         }
+
+         public void DeleteComment(Guid id)
+        {
+            var comment = _context.Comments.Find(id);
+            _context.Comments.Remove(comment);
+            _context.SaveChanges();
+        }
+
+        
     }
 }
 

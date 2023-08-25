@@ -335,12 +335,17 @@ div.tab {
     line-height: 1;
     margin: 0 0 2rem;
     padding: 0 0 0.5rem;
+    
 }
 
 .footer {
+    bottom: 0;
     padding: 4rem 0 4rem;
     background: url(/images/footer.png) repeat-x center bottom #70b5fa;
-    ;
+    clear: both;
+    position: relative;
+    height: 550px;
+    margin-top: -550px;
 }
 
     .footer.wb {

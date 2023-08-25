@@ -116,5 +116,14 @@ namespace TechBlogAPI.Controllers
             return Ok();
 
         }
+        [HttpDelete("DeleteComment/{id}")]
+        public async Task<ActionResult<Comment>> DeleteComment(Guid id)
+        {
+
+            _articleRepository.DeleteComment(id);
+
+            return Ok();
+
+        }
     }
 }

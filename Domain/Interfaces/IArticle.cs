@@ -21,5 +21,7 @@ namespace Domain.Interfaces
 
         void UpdateArticle(Article article);
         void DeleteArticle(Guid id);
+        void DeleteComment(Guid id);
+
     }
 }

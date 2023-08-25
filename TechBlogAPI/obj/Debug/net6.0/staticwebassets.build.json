@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ycEZ56xXZmIsOjrzxSisSFhPCs0nulKgH4RHv3ZV2W0=",
+  "Hash": "OIILCbtZNwAvOFI2U8j7WH+9qG/9WaZv8ENvmFL4aGA=",
   "Source": "TechBlogAPI",
   "BasePath": "_content/TechBlogAPI",
   "Mode": "Default",
@@ -1302,6 +1302,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\spinner.gif"
+    },
+    {
+      "Identity": "D:\\FOR-WORK\\New folder\\i-APS\\TechBlogApp\\wwwroot\\images\\typography-anime-text-numbers-wallpaper-preview.jpg",
+      "SourceId": "TechBlogApp",
+      "SourceType": "Project",
+      "ContentRoot": "D:\\FOR-WORK\\New folder\\i-APS\\TechBlogApp\\wwwroot\\",
+      "BasePath": "_content/TechBlogApp",
+      "RelativePath": "images/typography-anime-text-numbers-wallpaper-preview.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\typography-anime-text-numbers-wallpaper-preview.jpg"
     },
     {
       "Identity": "D:\\FOR-WORK\\New folder\\i-APS\\TechBlogApp\\wwwroot\\images\\wallpaperbetter.com_1920x1080.jpg",
