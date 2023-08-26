@@ -1,4 +1,5 @@
-﻿﻿@using TechBlogApp.Domain.Models
+﻿@using System.Security.Claims;
+﻿@using TechBlogApp.Domain.Models
 @model Article
 
 
@@ -6,6 +7,7 @@
     ViewData["Title"] = "Article Details";
     var isAuthenticated = User.Identity.IsAuthenticated;
     var isUserInRole = User.IsInRole("Creator") || User.IsInRole("Admin");
+    var auth = User?.FindFirstValue(ClaimTypes.NameIdentifier);
 }
 
 <div id="displayLoader" style="text-align:center;padding:4rem;"><img style="height:200px;width:200px;margin:0 auto;" src="/images/spinner.gif" alt="Loading..."></div>
@@ -76,6 +78,7 @@
 
                     <form method="post" id="commentForm">
                         <textarea id="commentContent" class="form-control" name="Content" placeholder="Your comment"></textarea>
+                        <input id="appUserId" type="hidden" name="AppUserId" value="@auth" />                        
                         <input id="articleId" type="hidden" name="ArticleId" value="@Model.ArticleId" /> <br />
                         <button class="btn btn-primary" type="button" id="submitComment">Submit Comment</button>
                     </form>
@@ -130,12 +133,13 @@
             $("#submitComment").click(function () {
                 var commentContent = $("#commentContent").val();
                 var articleId = $("#articleId").val();
+                var appUserId = $("#appUserId").val();
                 var currentDate = new Date();
 
 
                 var comment = {
                     DatePublished: currentDate,
-                    UserId: commentContent,
+                    AppUserId: appUserId,
                     Content: commentContent,
                     ArticleId: articleId
                 };
@@ -199,7 +203,7 @@
                                     </a>
                                     <div class="media-body">
 
-                                                                <h4 class="media-heading user_name">@Model.User.Fullname <small style="width:50%;" class="text-muted" id="time-${comment.id}">${comment.timeDifference}</small></h4>
+                                                                        <h4 class="media-heading user_name">${comment.user.fullname} <small style="width:50%;" class="text-muted" id="time-${comment.id}">${comment.timeDifference}</small></h4>
 
                                         
 

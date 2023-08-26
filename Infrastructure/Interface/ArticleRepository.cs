@@ -38,7 +38,7 @@ namespace Infrastructure.Interface
 
         public List<Comment>  GetCommentsArticleById(string id)
         {
-            return _context.Comments.Where(u=>u.ArticleId == id).ToList();
+            return _context.Comments.Include(u=>u.User).Where(u=>u.ArticleId == id).ToList();
 
         }
 

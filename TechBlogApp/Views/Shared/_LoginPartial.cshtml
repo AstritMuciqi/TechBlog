@@ -53,10 +53,12 @@ else
                 <b><i class="bi bi-person-badge"></i> @UserManager.GetUserName(User)</b>
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-                <a style="border-bottom:1px solid black;" class="dropdown-item" asp-controller="Account" asp-action="Login">
-                    <i class="bi bi-house-gear"></i>Admin Panel
-                </a>
+                @if (User.IsInRole("Admin"))
+                {
+                    <a style="border-bottom:1px solid black;" class="dropdown-item" asp-controller="Account" asp-action="Users">
+                        <i class="bi bi-people"></i>Manage Users
+                    </a>
+                }
 
                 <form asp-controller="Account" asp-action="Logout">
                     <button style="height: 85%;font-size:16px;background:none;border:none;color:red;margin-left:12%;">

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "OED5GFGgDBx6u7XQzGdr3w9aQnEBICpak4+Otlw9PXs=",
+  "Hash": "mt0AfnVWN7Oqrg+flKT2eTg3yKZ5XGVv6zgULExFJYw=",
   "Source": "TechBlogApp",
   "BasePath": "_content/TechBlogApp",
   "Mode": "Default",
@@ -1290,6 +1290,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\spinner.gif"
+    },
+    {
+      "Identity": "D:\\FOR-WORK\\New folder\\i-APS\\TechBlogApp\\wwwroot\\images\\thumb-1920-487516.jpg",
+      "SourceId": "TechBlogApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\FOR-WORK\\New folder\\i-APS\\TechBlogApp\\wwwroot\\",
+      "BasePath": "_content/TechBlogApp",
+      "RelativePath": "images/thumb-1920-487516.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\thumb-1920-487516.jpg"
     },
     {
       "Identity": "D:\\FOR-WORK\\New folder\\i-APS\\TechBlogApp\\wwwroot\\images\\typography-anime-text-numbers-wallpaper-preview.jpg",

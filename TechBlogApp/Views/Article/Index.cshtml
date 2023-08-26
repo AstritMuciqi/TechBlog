@@ -35,6 +35,15 @@
 
 <script>
     $(document).ready(function () {
+
+        toastr.options = {
+            closeButton: true,
+            progressBar: true,
+            positionClass: "toast-top-right",
+            preventDuplicates: true,
+            newestOnTop: true
+        };
+
         loadData();
 
 
@@ -155,6 +164,8 @@
             url: `http://localhost:5186/api/Article/${id}`, // Replace with your API endpoint URL
             type: 'DELETE',
             success: function (data) {
+                toastr.success("Article has been deleted successfully", "Success");
+
                 loadData();
             },
             error: function () {

@@ -269,6 +269,10 @@ namespace Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("AppUserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("ArticleId")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -286,11 +290,9 @@ namespace Persistence.Migrations
                     b.Property<int>("TimeDifference")
                         .HasColumnType("int");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
 
                     b.HasIndex("ArticleId1");
 
@@ -361,9 +363,17 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("TechBlogApp.Domain.Models.Comment", b =>
                 {
+                    b.HasOne("TechBlogApp.Domain.Models.AppUser", "User")
+                        .WithMany()
+                        .HasForeignKey("AppUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("TechBlogApp.Domain.Models.Article", null)
                         .WithMany("Comments")
                         .HasForeignKey("ArticleId1");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("TechBlogApp.Domain.Models.AppUser", b =>

@@ -1,9 +1,12 @@
 ﻿using Domain.Interfaces;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Security.Claims;
+using System.Xml.Linq;
 using TechBlogApp.Domain.Models;
+using TechBlogApp.Domain.ViewModels;
 using TechBlogApp.Persistence;
 using static System.Net.Mime.MediaTypeNames;
 
@@ -17,13 +20,15 @@ namespace TechBlogAPI.Controllers
     {
         private readonly IArticleRepository _articleRepository;
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<AppUser> userManager;
 
 
-        public ArticleController(IArticleRepository articleRepository, ApplicationDbContext context)
+        public ArticleController(IArticleRepository articleRepository, ApplicationDbContext context, UserManager<AppUser> userManager)
         {
 
             _articleRepository = articleRepository;
             _context = context;
+            this.userManager = userManager;
         }
         // GET: api/<ArticleController>
         [HttpGet]
@@ -48,21 +53,21 @@ namespace TechBlogAPI.Controllers
         }
         [HttpPost]
         [Route("AddComment")]
-        public async Task<IActionResult> AddComment([FromBody] Comment comment)
+        public async Task<IActionResult> AddComment([FromBody] CommentVM comment)
         {
 
             // Get the currently logged-in user
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            //var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            if (userId == null)
+            if (comment.AppUserId == null)
             {
-                userId = "123";
+                comment.AppUserId = "123";
             }
 
             // Create a new Comment object and populate it with data
             var newComment = new Comment
             {
-                UserId = userId,
+                AppUserId = comment.AppUserId,
                 //Content = commentModel.Content,
                 Content = comment.Content,
                 ArticleId = comment.ArticleId,
@@ -123,6 +128,47 @@ namespace TechBlogAPI.Controllers
             _articleRepository.DeleteComment(id);
 
             return Ok();
+
+        }
+
+        [HttpPost("changeUserRole/{userId}/{oldRoleName}/{newRoleName}")]
+        public async Task<ActionResult> ChangeUserRole(string userId, string oldRoleName, string newRoleName)
+        {
+            var user = await userManager.FindByIdAsync(userId);
+            if (user != null)
+            {
+
+                await userManager.RemoveFromRoleAsync(user, oldRoleName);
+                await userManager.AddToRoleAsync(user, newRoleName);
+
+                var result = await _context.SaveChangesAsync() > 0;
+                if (result) return Ok(new { message = "UserRole updated" });
+            }
+            else
+            {
+                return BadRequest(new ProblemDetails { Title = "Cannot find this user!" });
+            }
+            return Ok();
+        }
+
+        [HttpDelete("user/{id}")]
+        public async Task<ActionResult> DeleteUser(string id)
+        {
+            var user = await _context.Users.FindAsync(id);
+
+            if (user == null)
+            {
+                return BadRequest(new ProblemDetails { Title = "Can't find this user!" });
+            }
+            else
+            {
+                await userManager.DeleteAsync(user);
+
+                var result = await _context.SaveChangesAsync() > 0;
+
+                if (result) return Ok(new { message = "User Deleted Successful" });
+            }
+            return Ok(new { message = "User Deleted Successful" });
 
         }
     }

@@ -1,4 +1,6 @@
-﻿namespace TechBlogApp.Domain.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace TechBlogApp.Domain.Models
 {
     public class Article
     {
@@ -17,10 +19,11 @@
         public string Tags { get; set; }
 
         public virtual List<Comment> Comments { get; set; }
+        public string AppUserId { get; set; }
 
+        [ForeignKey("AppUserId")]
         public virtual AppUser User { get; set; }
 
-        public string AppUserId { get; set; }
 
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json.Linq;
 using TechBlogApp.Domain.Models;
 using TechBlogApp.Domain.Static;
@@ -119,6 +120,18 @@ namespace TechBlogApp.Controllers
             return View("RegisterCompleted");
 
         }
+        [HttpGet]
+        public async Task<ActionResult<List<UserRole>>> Users()
+        {
+            var usersWithRoles = await (from user in context.Users
+                                        join userRoles in context.UserRoles on user.Id equals userRoles.UserId
+                                        join role in context.Roles on userRoles.RoleId equals role.Id
+                                        select new UserRole { UserId = user.Id, UserName = user.UserName, RoleId = role.Id, RoleName = role.Name, Email = user.Email })
+                        .ToListAsync();
+            return View(usersWithRoles);
+        }
+
+        
 
         //Logout
         [HttpPost]
