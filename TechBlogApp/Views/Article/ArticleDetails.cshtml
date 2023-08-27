@@ -4,8 +4,14 @@
 
 
 @{
+    
+    var tagArray = Model.Tags.Split('#');
+
+
     ViewData["Title"] = "Article Details";
     var isAuthenticated = User.Identity.IsAuthenticated;
+    // var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
     var isUserInRole = User.IsInRole("Creator") || User.IsInRole("Admin");
     var auth = User?.FindFirstValue(ClaimTypes.NameIdentifier);
 }
@@ -40,7 +46,16 @@
 
             </div>
         }
-        
+        <br />
+
+        <div class="tag-cloud-single">
+            <span style="background:#00c0ff;">Tags</span>
+            @for (var i = 0; i < tagArray.Length-1; i++)
+            {
+                var tag = tagArray[i + 1];
+                <small><a href="#" title=""> #@tag</a></small>
+            }
+        </div><!-- end meta -->
 
         <div style="margin-top:3%;" class="custombox clearfix">
             <h4 class="small-title"><span id="commentCount">0</span> Comments</h4>
@@ -180,13 +195,17 @@
 
         function getComments(id){
             var fullname = $(this).data('fullname');
-
+            var userId1 = '@auth';
+            console.log(userId1);
 
             $.ajax({
                 url: `http://localhost:5186/api/Article/GetComments?id=${id}`,
                 method: 'GET',
                 dataType: 'json',
                 success: function (data) {
+                    console.log(data);
+
+                    
                     // Update comment count
                     $('#commentCount').text(data.comments.length);
 
@@ -195,24 +214,20 @@
                     commentsList.empty(); // Clear existing comments
 
                     $.each(data.comments, function (index, comment) {
+
                         var commentHtml = `
-                             <div class="media" data-fullname="@Model.User.Fullname">
-
-                                    <a class="media-left" href="#">
-                                        <img src="/images/author.png" alt="" class="rounded-circle">
-                                    </a>
-                                    <div class="media-body">
-
-                                                                        <h4 class="media-heading user_name">${comment.user.fullname} <small style="width:50%;" class="text-muted" id="time-${comment.id}">${comment.timeDifference}</small></h4>
-
-                                        
-
-                                        <p>${comment.content}</p>
-                                        <a href="#" class="btn btn-primary btn-sm">Reply</a>
-                                                <button id="buttonDelete" onclick="deleteComment(${comment.id})" class="btn btn-outline-danger btn-sm" value="${comment.id}">Delete</button>
-                                    </div>
+                            <div class="media" data-fullname="@Model.User.Fullname">
+                                <a class="media-left" href="#">
+                                    <img src="/images/author.png" alt="" class="rounded-circle">
+                                </a>
+                                <div class="media-body">
+                                    <h4 class="media-heading user_name">${comment.user.fullname} <small style="width:50%;" class="text-muted" id="time-${comment.id}">${comment.timeDifference}</small></h4>
+                                    <p>${comment.content}</p>
+                                    <a href="#" class="btn btn-primary btn-sm">Reply</a>
+                                                    ${comment.appUserId == userId1 ? `<button id="buttonDelete" onclick="deleteComment(${comment.id})" class="btn btn-outline-danger btn-sm" value="${comment.id}">Delete</button>` : ''}
                                 </div>
-                            `;
+                            </div>
+                        `;
 
                         commentsList.append(commentHtml);
                         updatePublishedTime(comment);
