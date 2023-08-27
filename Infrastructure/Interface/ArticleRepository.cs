@@ -19,11 +19,16 @@ namespace Infrastructure.Interface
             _context = context;
         }
 
-        public IEnumerable<Article> GetAllArticles(string search)
+        public IEnumerable<Article> GetAllArticles(string search, string tag)
         {
             if (!string.IsNullOrEmpty(search))
             {
                 return _context.Articles.Include(n => n.User).Where(n => n.Title.Contains(search)).ToList();
+
+            }
+            if (!string.IsNullOrEmpty(tag))
+            {
+                return _context.Articles.Include(n => n.User).Where(n => n.Tags.Contains(tag)).ToList();
 
             }
             return _context.Articles.Include(n => n.User).ToList();

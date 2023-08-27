@@ -33,14 +33,14 @@ namespace TechBlogAPI.Controllers
         // GET: api/<ArticleController>
         [HttpGet]
         [Route("")]
-        public async Task<IActionResult> Get(string? search = "")
+        public async Task<IActionResult> Get(string? search = "", string? tag = "")
         {
-            var articles = _articleRepository.GetAllArticles(search);
+            var articles = _articleRepository.GetAllArticles(search, tag);
 
-            if (!string.IsNullOrEmpty(search))
-            {
-                articles = _articleRepository.GetAllArticles(search);
-            }
+            //if (!string.IsNullOrEmpty(search) || !string.IsNullOrEmpty(tag))
+            //{
+            //    articles = _articleRepository.GetAllArticles(search, tag);
+            //}
 
             foreach (var article in articles)
             {
@@ -87,21 +87,34 @@ namespace TechBlogAPI.Controllers
 
         [HttpGet]
         [Route("GetComments")]
-        public async Task<ActionResult> GetComments(Guid id)
+        public async Task<IActionResult> GetComments(Guid id, int page = 1, int pageSize = 3)
         {
             string idArticle = id.ToString();
-            // If the model state is not valid, return to the article details view with the validation errors
 
-            var comments = _articleRepository.GetCommentsArticleById(idArticle);
+            var allComments = _articleRepository.GetCommentsArticleById(idArticle);
 
-            foreach (var comment in comments)
+            foreach (var comment in allComments)
             {
                 var timeDifference = DateTime.Now - comment.DatePublished;
                 comment.TimeDifference = (int)timeDifference.TotalMinutes;
-
             }
 
-            return Ok(new { message = "Comment load successfully!", comments });
+            var totalCount = allComments.Count();
+            var totalPages = (int)Math.Ceiling((double)totalCount / pageSize);
+
+            var comments = allComments
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToList();
+
+            return Ok(new
+            {
+                message = "Comment load successfully!",
+                comments,
+                currentPage = page,
+                totalPages,
+                totalItems = totalCount
+            });
         }
 
 

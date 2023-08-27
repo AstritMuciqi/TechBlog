@@ -9,6 +9,8 @@
 
 <h2>Articles</h2>
 
+<h5 id="tag" style="display:none;margin-top:2%;color:#cd0808;"></h5>
+
 <div style="border:1px solid lightgray;padding:1rem;box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;" class="container mt-5">
     <h4 class="mb-4">Sort Articles</h4>
     <form id="sorting-form" class="form-inline mb-3">
@@ -36,6 +38,13 @@
 <script>
     $(document).ready(function () {
 
+        var url = window.location.href;
+
+        const parsedUrl = new URL(url);
+
+        const tagValue = parsedUrl.searchParams.get('tag');
+
+
         toastr.options = {
             closeButton: true,
             progressBar: true,
@@ -43,8 +52,7 @@
             preventDuplicates: true,
             newestOnTop: true
         };
-
-        loadData();
+        
 
 
       
@@ -54,6 +62,12 @@
             console.log(articleId);
             deleteArticle(articleId);
         });
+
+        if (tagValue != null) {
+            loadDataTag(tagValue);
+        } else {
+            loadData();
+        }
         const searchInput = document.getElementById("searchInput");
         console.log(searchInput);
         searchInput.addEventListener('input', () => {
@@ -64,7 +78,7 @@
                 loadDataSearch(searchTerm);
             }
             if (searchTerm.length == 0) {
-                loadData(); // Load data when search input is cleared
+                loadData(); 
             }
         });
 
@@ -86,11 +100,90 @@
         $('#data-container').empty().append($articles);
     }
 
+    function loadDataTag(tag) {
+        var IsAuthenticated = @isAuthenticated.ToString().ToLower();
+        var IsUserInRole = @isUserInRole.ToString().ToLower();
+        $.ajax({
+            url: `http://localhost:5186/api/Article?tag=${tag}`,
+            type: 'GET',
+            success: function (data) {
+                // Clear existing content
+                $('#data-container').empty();
+
+                var myElement = document.getElementById('tag');
+
+                myElement.innerHTML = '#' + tag.toUpperCase();
+
+                myElement.style.display = 'block'; 
+
+                $.each(data, function (index, article) {
+
+                    var card = `
+            <div style="margin-top: 2%; display: flex; flex-direction: row;" class="card">
+
+                <div style="margin-right: 1.5625rem;
+                min-width: 15.625rem;
+                max-width: 15.625rem;
+                width: 15.625rem;
+                min-height: 11.75rem;
+                height: 8.75rem;
+                max-height: 8.75rem;
+                border-radius: .5rem;
+                margin-bottom: 0;">
+                        <a href="/Article/ArticleDetails/${article.articleId}"  class="card-title">
+                            <img style="width:100%;height:100%;object-fit:cover;" src="/images/${article.imagePath}" alt="Card image cap">
+                        </a>
+                </div>
+
+                <div style="display:flex;justify-content:space-between; flex-direction:column;" class="card-body">
+                    <a style="margin-top: 1.35rem;
+                            font-family: inter tight,sans-serif;
+                            font-size: 1.05rem;
+                            line-height: 1.1904761905em;
+                            font-weight: 800;
+                            color: black;
+                            text-align: start;
+                            display: -webkit-box;
+                            -webkit-line-clamp: 3;
+                            -webkit-box-orient: vertical;
+                            overflow: hidden;"
+                            href="/Article/ArticleDetails/${article.articleId}" class="card-title">${article.title}</a>
+
+                    <div style="display:flex; border-bottom:1px solid lightgray;margin-bottom:3%;">
+            <small style="width:50%;" class="text-muted" id="time-${article.articleId}">${article.timeDifference}</small>
+                            <p style="display:flex;justify-content:space-between;width:20%;margin-left:29%">
+                            <i class="bi bi-facebook"></i>
+                            <i class="bi bi-twitter"></i>
+                            <i class="bi bi-linkedin"></i>
+                        </p>
+                    </div>
+                </div>
+
+                     ${(IsAuthenticated && IsUserInRole)
+                            ? `<div style="display:flex;height:100%;justify-content:space-between; flex-direction:column;background:white;" class="card-footer">
+                                    <a href="/Article/CreatorPage/${article.articleId}" class="btn btn-outline-primary">Edit</a>
+                                    <button style="margin-top:15%;" onclick="deleteArticle(${article.articleId})" class="btn btn-outline-danger">Delete</button>
+                                </div>`
+                            : ''
+                        }
+            </div>
+        `;
+                    $('#data-container').append(card);
+                    updatePublishedTime(article);
+
+                });
+            },
+            error: function () {
+                $('#data-container').text('Error loading data.');
+            }
+        });
+    }
+
     function loadDataSearch(searchTerm) {
         var IsAuthenticated = @isAuthenticated.ToString().ToLower();
         var IsUserInRole = @isUserInRole.ToString().ToLower();
         $.ajax({
-            url: `http://localhost:5186/api/Article?search=${searchTerm}`,//Replace with your API endpoint URL
+            url: `http://localhost:5186/api/Article?search=${searchTerm}`,
                         type: 'GET',
             success: function (data) {
                 // Clear existing content
@@ -111,9 +204,9 @@
             max-height: 8.75rem;
             border-radius: .5rem;
             margin-bottom: 0;">
-                <a asp-controller="Article" asp-action="ArticleDetails" asp-route-id="${article.articleId}" class="card-title">
-                    <img style="width:100%;height:100%;object-fit:cover;" src="/images/${article.imagePath}" alt="Card image cap">
-                </a>
+                    <a href="/Article/ArticleDetails/${article.articleId}"  class="card-title">
+                        <img style="width:100%;height:100%;object-fit:cover;" src="/images/${article.imagePath}" alt="Card image cap">
+                    </a>
             </div>
 
             <div style="display:flex;justify-content:space-between; flex-direction:column;" class="card-body">
@@ -128,7 +221,8 @@
                         -webkit-line-clamp: 3;
                         -webkit-box-orient: vertical;
                         overflow: hidden;"
-                        asp-controller="Article" asp-action="ArticleDetails" asp-route-id="${article.articleId}" class="card-title">${article.title}</a>
+                        href="/Article/ArticleDetails/${article.articleId}"
+                        class="card-title">${article.title}</a>
 
                 <div style="display:flex; border-bottom:1px solid lightgray;margin-bottom:3%;">
         <small style="width:50%;" class="text-muted" id="time-${article.articleId}">${article.timeDifference}</small>
@@ -161,7 +255,7 @@
     }
     function deleteArticle(id) {
         $.ajax({
-            url: `http://localhost:5186/api/Article/${id}`, // Replace with your API endpoint URL
+            url: `http://localhost:5186/api/Article/${id}`, 
             type: 'DELETE',
             success: function (data) {
                 toastr.success("Article has been deleted successfully", "Success");
@@ -181,7 +275,7 @@
 
 
         $.ajax({
-            url: 'http://localhost:5186/api/Article/', // Replace with your API endpoint URL
+            url: 'http://localhost:5186/api/Article/', 
             type: 'GET',
             success: function (data) {
                 // Clear existing content

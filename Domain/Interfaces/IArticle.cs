@@ -9,7 +9,7 @@ namespace Domain.Interfaces
 {
     public interface IArticleRepository
     {
-        IEnumerable<Article> GetAllArticles(string search);
+        IEnumerable<Article> GetAllArticles(string search, string tag);
 
         List<Comment> GetCommentsArticleById(string id);
 

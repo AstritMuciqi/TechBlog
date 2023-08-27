@@ -40,24 +40,22 @@
         </div>
         @if (isAuthenticated && isUserInRole)
         {
-            <div class="card-footer">
+            <div style="background-color:white;" class="card-footer">
                 @Html.ActionLink("Edit", "CreatorPage", new {Id = Model.ArticleId}, new {@class="btn btn-sm btn-secondary"})
-                <button onclick="deleteArticle('@Model.ArticleId')" class="btn btn-outline-danger">Delete</button>
+                <button onclick="deleteArticle('@Model.ArticleId')" class="btn btn-outline-danger btn-sm">Delete</button>
 
             </div>
         }
         <br />
-
         <div class="tag-cloud-single">
-            <span style="background:#00c0ff;">Tags</span>
+            <span style="background:#00c0ff;font-size:20px;">Tags</span>
             @for (var i = 0; i < tagArray.Length-1; i++)
             {
                 var tag = tagArray[i + 1];
-                <small><a href="#" title=""> #@tag</a></small>
+                <small><a style="font-size:15px;" href="http://localhost:5075/Article/index?tag=@tag" title=""> #@tag</a></small>
             }
         </div><!-- end meta -->
-
-        <div style="margin-top:3%;" class="custombox clearfix">
+        <div id="commentsSection" style="margin-top:3%;" class="custombox clearfix">
             <h4 class="small-title"><span id="commentCount">0</span> Comments</h4>
             <div class="row">
                 <div class="col-lg-12">
@@ -78,9 +76,14 @@
                     </div>
                 </div><!-- end col -->
             </div><!-- end row -->
+            <ul class="pagination">
+                <li><a href="#" id="prevPageBtn" class="pagination-link">Previous</a></li>
+                <li><a href="#" id="nextPageBtn" class="pagination-link">Next</a></li> <br />
+            </ul>
+            <span style="font-size:15px;" id="paginationInfo" class="pagination-info">Page 1 of</span>  <span style="font-size:15px;" id="totalPagesId" class="pagination-info"></span>
         </div><!-- end custom-box -->
 
-
+       
 
 
 
@@ -110,9 +113,16 @@
     <script>
 
         $(document).ready(function () {
+            var currentPage = 1; // Initialize current page
+            var totalPages = 1;
+
+
             setTimeout(() => {
                 $('#data-container').toggle();
                 $('#displayLoader').toggle();
+                totalPages = $('#totalPagesId').text(); // The second argument specifies the base (10 for decimal).
+
+                console.log(totalPages);
                 
             }, 1500);
 
@@ -128,14 +138,51 @@
                 deleteComment(commentId);
                 $('.media').empty();
                 setTimeout(() => {
-                    getComments(id);
+                    getComments(id, currentPage);
                 }, 500);
 
             });
-
+            function scrollToSelector(selector) {
+                const element = document.querySelector(selector);
+                if (element) {
+                    element.scrollIntoView({ block: 'start' });
+                }
+            }
 
             console.log(id);
-            getComments(id);
+            getComments(id, currentPage);
+           
+            function updatePaginationButtons() {
+                $('.pagination-link').removeClass('active');
+                $(`#pageBtn${currentPage}`).addClass('active');
+            }
+            function updatePaginationInfo() {
+                $('#paginationInfo').text(`Page ${currentPage} of`);
+            }
+
+            $('#prevPageBtn').click(function () {
+                if (currentPage > 1) {
+                    currentPage--;
+                    getComments(id, currentPage);
+                }
+                updatePaginationButtons();
+                $("html, body").animate({
+                    scrollTop: $("#commentsList").offset().top
+                }, 1000);
+                updatePaginationInfo(); 
+            });
+
+            $('#nextPageBtn').click(function () {
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    getComments(id, currentPage);
+                    updatePaginationButtons();
+                    $("html, body").animate({
+                        scrollTop: $("#commentsList").offset().top
+                    }, 1000);
+                    updatePaginationInfo(); 
+                }
+            });
 
             $('#data-container-details').on('click', '.btn-outline-danger', function () {
                 // alert("Do you want to delete Article ?");
@@ -161,14 +208,17 @@
                 // console.log({ ArticleId: articleId, Content: commentContent });
                 $.ajax({
                     type: "POST",
-                    url: "http://localhost:5186/api/Article/AddComment", // Replace ControllerName with the actual name of your controller
+                    url: "http://localhost:5186/api/Article/AddComment", 
                     data: JSON.stringify(comment),
                     contentType: "application/json",
                     success: function (response) {
                         $('#commentContent').val('');
                         $("#resultMessage").html(response.message);
-                        getComments(id);
-                        // Optionally, you can handle other logic here
+                        getComments(id, currentPage);
+                        // document.getElementById('commentsSection').scrollIntoView();
+                        $("html, body").animate({
+                            scrollTop: $("#commentsList").offset().top
+                        }, 1000); 
                     },
                     error: function (xhr, status, error) {
                         var errorMessage = xhr.responseJSON.title;
@@ -177,12 +227,13 @@
                 });
             });
 
-            
+            console.log($('#totalPagesId').text());
+
 
         });
         function deleteArticle(id) {
             $.ajax({
-                url: `http://localhost:5186/api/Article/${id}`, // Replace with your API endpoint URL
+                url: `http://localhost:5186/api/Article/${id}`, 
                 type: 'DELETE',
                 success: function (data) {
                     window.location.assign("http://localhost:5075/");
@@ -193,13 +244,13 @@
             });
         }
 
-        function getComments(id){
+        function getComments(id, page){
             var fullname = $(this).data('fullname');
             var userId1 = '@auth';
             console.log(userId1);
 
             $.ajax({
-                url: `http://localhost:5186/api/Article/GetComments?id=${id}`,
+                url: `http://localhost:5186/api/Article/GetComments?id=${id}&page=${page}`,
                 method: 'GET',
                 dataType: 'json',
                 success: function (data) {
@@ -207,11 +258,12 @@
 
                     
                     // Update comment count
-                    $('#commentCount').text(data.comments.length);
+                    $('#commentCount').text(data.totalItems);
+                    $('#totalPagesId').text(data.totalPages);
 
                     // Append comments
                     var commentsList = $('#commentsList');
-                    commentsList.empty(); // Clear existing comments
+                    commentsList.empty(); 
 
                     $.each(data.comments, function (index, comment) {
 
@@ -272,7 +324,7 @@
 
         function deleteComment(id) {
             $.ajax({
-                url: `http://localhost:5186/api/Article/DeleteComment/${id}`, // Replace with your API endpoint URL
+                url: `http://localhost:5186/api/Article/DeleteComment/${id}`, 
                 type: 'DELETE',
                 success: function (data) {
                 },
